@@ -4,10 +4,10 @@ let id = 0;
 module.exports = {
 
   create:(req, res, next) => {
-      const {text, time} = req.body;
-      messages.push({id, text, time});
-      id += 1;
-      res.json(messages)
+     const { text, time } = req.body;
+     messages.push({id, text, time})
+     id++;
+     res.status(200).json(messages);
     },
 
   read: (req, res, next) => {
@@ -15,23 +15,25 @@ module.exports = {
       res.json(messages);
     },
 
+  
   update: (req, res, next) => {
-    console.log(req.params);
-      const updateID = req.params.id;
-       let index = messages.findIndex(messages => messages.id == updateID );
+    const { text } = req.body;
+    const updateID = req.params.id;
+    const messageIndex = messages.findIndex(message => message.id === updateID);
+    let message = messages[messageIndex];
 
-       messages[index] = {
-         id: messages[index].id,
-         text: req.params.text || messages[index].text,
-         time: messages[index].time
-       };
-       res.json(messages);
-     },
+    messages[message] = {
+      id: message.id,
+      text: text || message.text,
+      time: message.time
+    };
+      res.status(200).json(messages)
+  },
 
   delete: (req, res, next) => {
        const deleteID = req.params.id;
-       messageIndex = messages.findIndex(messages => messages.id == updateID);
-       messages.splice(messageindex, 1);
-        res.json(messages);
+       messageIndex = messages.findIndex(message => message.id === deleteID)
+       messages.splice(messageIndex, 1)
+       res.status(200).json(messages)
     }
   };
