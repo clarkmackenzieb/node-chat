@@ -6,12 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ericdrewes/node-chat.git"
-  },
+  "repository": "git+https://github.com/ericdrewes/node-chat.git",
   "keywords": [],
-  "author": "",
+  "author": "ericdrewes <eric.d.drewes@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ericdrewes/node-chat/issues"
